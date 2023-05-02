@@ -5,8 +5,12 @@ const http = axios.create({
 });
 
 export const api = {
-  listar: async (endpoint: string) => {
+  getAll: async (endpoint: string) => {
     const response = await http.get(endpoint);
+    return response.data;
+  },
+  getById: async (endpoint: string, id: string | undefined) => {
+    const response = await http.get(`${endpoint}/${id}`);
     return response.data;
   },
 };

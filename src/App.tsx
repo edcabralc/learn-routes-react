@@ -1,8 +1,12 @@
-import { Home } from "./components/Home/Home";
+import { Header } from "./components/commons/Header";
+import { Footer } from "./components/commons/Footer";
+import { MainRoutes } from "./routes/MainRoutes";
 const App = () => {
   return (
     <>
-      <Home />
+      <Header></Header>
+      <MainRoutes />
+      <Footer></Footer>
     </>
   );
 };

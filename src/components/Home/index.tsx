@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-import { Photo } from "../../types/Photo";
 import { api } from "../../services/api";
 
+import { Galery } from "../../types/Gallery";
 import { Title } from "../commons/Title";
+import "./Home.css";
 
 export const Home = () => {
-  const [photos, setPhotos] = useState<Photo[]>([]);
+  const [gallery, setGallery] = useState<Galery[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -15,27 +17,19 @@ export const Home = () => {
 
   const loadPhotos = async () => {
     setLoading(true);
-    const json = await api.listar("/photos");
+    const json = await api.getAll("/albums");
     setLoading(false);
-    setPhotos(json);
+    setGallery(json);
   };
 
   return (
     <>
       <h1>Galeria de fotos</h1>
       {loading && <div>Carregando...</div>}
-      <div>
-        {photos.map(({ title, url, thumbnailUrl, id }) => (
-          <div key={id}>
-            <ul>
-              <li>
-                <img src={thumbnailUrl} alt={title} />
-              </li>
-              <li>
-                <Title title={title} />
-                <p>{url}</p>
-              </li>
-            </ul>
+      <div className="container-photos">
+        {gallery.map(({ title, id }) => (
+          <div key={id} className="link-container">
+            <Link to={`/galeria/${id}`}>{title}</Link>
           </div>
         ))}
       </div>

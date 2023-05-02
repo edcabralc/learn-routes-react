@@ -1,0 +1,19 @@
+.container-photos {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  /* justify-content: center; */
+  width: 100%;
+  gap: 5px;
+  background-color: antiquewhite;
+  padding: 15px 0;
+}
+
+.link-container {
+  display: flex;
+  width: 100%;
+  padding: 30px;
+  background-color: aqua;
+  cursor: pointer;
+}
